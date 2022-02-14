@@ -22,7 +22,8 @@ describe('Cadstro', ()=>{
             },
             metodo_entrega:'Moto',
             metodo_entrega_2:'Bicicleta',
-            metodo_entrega_3: 'Van/Carro'
+            metodo_entrega_3: 'Van/Carro',
+            cnh:'cnh_gratuita.jpg'
         }
         
         //Validação de preenchimento de campos pela massa de testes via variavel
@@ -43,6 +44,10 @@ describe('Cadstro', ()=>{
         cy.get('input[name="city-uf"]').should('have.value', entregador.endereco.cidade_uf)
 
         //Selecionando o tipo de veiculo para entrega via contains combinando o seletor css com o texto
-        cy.contains('.delivery-method li', entregador.metodo_entrega).click()    
+        cy.contains('.delivery-method li', entregador.metodo_entrega).click()  
+        
+        //Upload de arquivo(instalar a biblioteca no cypress - npm install cypress-file-upload --save-dev)
+        //importar o pacote no arquivo index.js (import 'cypress-file-upload')
+        cy.get('input[accept^="image"]').attachFile('/images/' + entregador.cnh)
     })
 })
