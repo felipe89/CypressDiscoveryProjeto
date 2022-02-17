@@ -1,11 +1,8 @@
+import SignupPage from '../pages/SignupPage'
+
 describe('Cadstro', ()=>{
     it ('Usuario deve se cadastrar para se tornar um entregador', ()=>{
-        cy.viewport(1920, 1080)
-        cy.visit('https://buger-eats.vercel.app/')
-
-        cy.get('a[href="/deliver"]').click()
-        cy.get('#page-deliver form h1').should('have.text','Cadastre-se para  fazer entregas')
-
+        
         //Gerando massa de testes para preenchimento de formulario por variavel
         var entregador = {
             nome: 'Felipe',
@@ -25,29 +22,44 @@ describe('Cadstro', ()=>{
             metodo_entrega_3: 'Van/Carro',
             cnh:'cnh_gratuita.jpg'
         }
-        
-        //Validação de preenchimento de campos pela massa de testes via variavel
-        cy.get('input[name="name"]').type(entregador.nome)
-        cy.get('input[name="cpf"]').type(entregador.cpf)
-        cy.get('input[name="email"]').type(entregador.email)
-        cy.get('input[name="whatsapp"]').type(entregador.whatsapp)
 
-        //Validação de preenchimento de campo via massa de testes por segundo nivel (entregador.endereco)
-        cy.get('input[name="postalcode"]').type(entregador.endereco.cep)
-        cy.get('input[type="button"][value="Buscar CEP"]').click()
-        cy.get('input[name="address-number"]').type(entregador.endereco.numero)
-        cy.get('input[name="address-details"]').type(entregador.endereco.complento)
+        var signup = new SignupPage()
 
-        //Validação se os campos estão preenchido corretamenten checkpoint
-        cy.get('input[name="address"]').should('have.value', entregador.endereco.rua)
-        cy.get('input[name="district"]').should('have.value', entregador.endereco.bairro)
-        cy.get('input[name="city-uf"]').should('have.value', entregador.endereco.cidade_uf)
+        signup.acessarPaginaBuerEats()
+        signup.preencherFormulario(entregador)
+        signup.submeterFormulario()
+        const expectedMessage = 'Recebemos os seus dados. Fique de olho na sua caixa de email, pois e em breve retornamos o contato.'
+        signup.modalValidaCadastro(expectedMessage)
+    })
 
-        //Selecionando o tipo de veiculo para entrega via contains combinando o seletor css com o texto
-        cy.contains('.delivery-method li', entregador.metodo_entrega).click()  
-        
-        //Upload de arquivo(instalar a biblioteca no cypress - npm install cypress-file-upload --save-dev)
-        //importar o pacote no arquivo index.js (import 'cypress-file-upload')
-        cy.get('input[accept^="image"]').attachFile('/images/' + entregador.cnh)
+it ('CPF Invalido', ()=>{
+   
+    //Gerando massa de testes para preenchimento de formulario por variavel
+    var entregador = {
+        nome: 'Felipe',
+        cpf: '000111333BF',
+        email: 'teste@automacao.com.br',
+        whatsapp: '11999999999',
+        endereco: {
+            cep:'08330415',
+            rua:'Rua Galáxia',
+            numero:'955',
+            complento:'Em frente a praça',
+            bairro:'Cidade Satélite Santa Bárbara',
+            cidade_uf:'São Paulo/SP'
+        },
+        metodo_entrega:'Moto',
+        metodo_entrega_2:'Bicicleta',
+        metodo_entrega_3: 'Van/Carro',
+        cnh:'cnh_gratuita.jpg'
+    }
+
+    var signup = new SignupPage()
+
+    signup.acessarPaginaBuerEats()
+    signup.preencherFormulario(entregador)
+    signup.submeterFormulario()
+    signup.menssagemAlerta('Oops! CPF inválido')
+
     })
 })
