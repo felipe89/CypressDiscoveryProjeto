@@ -1,0 +1,38 @@
+{
+    "signup":{
+        "nome": "Felipe",
+        "cpf": "00011133311",
+        "email": "teste@automacao.com.br",
+        "whatsapp": "11999999999",
+        "endereco": {
+            "cep":"08330415",
+            "rua":"Rua Galáxia",
+            "numero":"955",
+            "complento":"Em frente a praça",
+            "bairro":"Cidade Satélite Santa Bárbara",
+            "cidade_uf":"São Paulo/SP"
+        },
+        "metodo_entrega":"Moto",
+        "metodo_entrega_2":"Bicicleta",
+        "metodo_entrega_3": "Van/Carro",
+        "cnh":"cnh_gratuita.jpg"
+    },
+    "cpf_invalido":{
+        "nome": "Jady",
+        "cpf": "XZ000111333AA",
+        "email": "automacao@teste.com.br",
+        "whatsapp": "11555555555",
+        "endereco": {
+            "cep":"08330415",
+            "rua":"Rua Galáxia",
+            "numero":"955",
+            "complento":"Em frente a praça",
+            "bairro":"Cidade Satélite Santa Bárbara",
+            "cidade_uf":"São Paulo/SP"
+        },
+        "metodo_entrega":"Moto",
+        "metodo_entrega_2":"Bicicleta",
+        "metodo_entrega_3": "Van/Carro",
+        "cnh":"cnh_gratuita.jpg"
+    }
+}
