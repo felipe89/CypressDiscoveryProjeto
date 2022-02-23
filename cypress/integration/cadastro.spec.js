@@ -22,4 +22,11 @@ describe("Cadstro", () => {
     signup.submeterFormulario();
     signup.menssagemAlerta("Oops! CPF inválido");
   });
+
+  it("E-mail Invalido", function () {
+    signup.acessarPaginaBuerEats();
+    signup.preencherFormulario(this.deliver.email_Invalido);
+    signup.submeterFormulario();
+    signup.menssagemAlerta("Oops! Email com formato inválido.");
+  });
 });

@@ -34,5 +34,23 @@
         "metodo_entrega_2":"Bicicleta",
         "metodo_entrega_3": "Van/Carro",
         "cnh":"cnh_gratuita.jpg"
+    },
+    "email_Invalido":{
+        "nome": "Felipe",
+        "cpf": "00011133311",
+        "email": "teste.com.br",
+        "whatsapp": "11999999999",
+        "endereco": {
+            "cep":"08330415",
+            "rua":"Rua Galáxia",
+            "numero":"955",
+            "complento":"Em frente a praça",
+            "bairro":"Cidade Satélite Santa Bárbara",
+            "cidade_uf":"São Paulo/SP"
+        },
+        "metodo_entrega":"Moto",
+        "metodo_entrega_2":"Bicicleta",
+        "metodo_entrega_3": "Van/Carro",
+        "cnh":"cnh_gratuita.jpg"
     }
 }
