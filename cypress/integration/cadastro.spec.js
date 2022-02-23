@@ -1,6 +1,25 @@
 import SignupPage from '../pages/SignupPage'
 
 describe('Cadstro', ()=>{
+
+    //Ganchos do cypress
+    before(function() {
+        cy.log('Tudo aqui é executado uma unica vez ANTES de TODOS os casos de testes')
+    })
+
+    beforeEach(function() {
+        cy.log('Tudo aqui é executado sempre ANTES de CADA caso de teste')
+    })
+
+    after(function() {
+        cy.log('Tudo aqui é executado uma unica vez DEPOSI de TODOS os casos de testes')
+    })
+
+    afterEach(function() {
+        cy.log('Tudo aqui é executado sempre DEPOIS de CADA caso de teste')
+    })
+
+
     it ('Usuario deve se cadastrar para se tornar um entregador', ()=>{
         
         //Gerando massa de testes para preenchimento de formulario por variavel
