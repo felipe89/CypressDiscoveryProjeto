@@ -61,6 +61,7 @@ describe("Cadstro", () => {
       signup.submeterFormulario();
     })
 
+    //Criando um forEach para validar mensagem a mensagem loop
     messages.forEach(function(msg){
       it(`${msg.field} is required`, function(){
         signup.menssagemAlerta(msg.output)
