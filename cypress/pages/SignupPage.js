@@ -43,8 +43,11 @@ class SignupPage{
     }
 
     menssagemAlerta(expectedMessage){
-        //Validação de alerta de campo invalido
-        cy.get('.alert-error').should('have.text',  expectedMessage)
+        //Utilizando a validação abaixo ela valida um por um o retorno da mensagel
+        // cy.get('.alert-error').should('have.text',  expectedMessage)
+
+        //utilizando a validação abaixo a mesma valida todas as mensagem que apresentarem em tela
+        cy.contains('.alert-error', expectedMessage).should('be.visible')
     }
 }
 
